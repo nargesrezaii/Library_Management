@@ -1,0 +1,13 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\libraryManagement",
+    "\\libraryManagement\\librarymanage",
+    "\\libraryManagement\\libraryManagement",
+    "\\libraryManagement\\librarymanage\\migrations",
+    "\\libraryManagement\\librarymanage\\templates",
+    "\\libraryManagement\\librarymanage\\templates\\librarymanage"
+  ],
+  "SelectedNode": "\\libraryManagement\\librarymanage\\views.py",
+  "PreviewInSolutionExplorer": false
+}

@@ -1,0 +1,14 @@
+{% extends 'librarymanage/base.html' %}
+
+{% block title %}Add a new book{% endblock %}
+
+{% block content %}
+<h1>Add a new book</h1>
+<form method="post" action="/create/">
+    {% csrf_token %}
+    {{newbookform.as_p}}
+    <button type="submit" ,name="save changes">save new book</button>
+</form>
+{% endblock %}
+
+

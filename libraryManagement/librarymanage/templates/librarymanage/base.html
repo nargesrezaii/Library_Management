@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width , initial-scale=1.0">
+    <title>{% block title %}Library{% endblock %}</title>
+    <style>
+
+        html, body {
+            margin: 0;
+            height: 100%;
+        }
+
+        .container {
+            display: flex;
+            gap: 30px;
+        }
+
+        .sidenav {
+            width: 160px;
+            height: 100vh;
+            background-color: lightblue;
+        }
+
+        .sidenav a {
+            padding: 18px 8px 6px 16px;
+            text-decoration: none;
+            font-size: 25px;
+            color: grey;
+            display:block;
+        }
+
+        .sidenav a:hover {
+            color: #f1f1f1;
+        }
+
+        .main {
+            flex:1;
+            height: 100vh;
+            background-color: lightgreen;    
+            padding:0px 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="sidenav">
+            <a href="/home/">Home</a>
+            <a href="/create/">create</a>
+            <a href="/authors/">authors</a>
+            <a href="/books/">books</a>
+            <a href="/search/">search</a>
+            <a href="/remove/">remove</a>
+        </div>
+        <div id="content",name="content",class="main">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </div>
+</body>
+</html>

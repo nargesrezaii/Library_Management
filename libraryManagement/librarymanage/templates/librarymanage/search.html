@@ -1,0 +1,13 @@
+{% extends 'librarymanage/base.html' %}
+
+{% block title %}Search books{% endblock %}
+
+{% block content %}
+<h1>searching a book or an author:</h1>
+<form method="post" action="/search/">
+    {% csrf_token %}
+    {{newsearch.as_p}}
+    <button type="submit" ,name="search">find</button>
+</form>
+{% endblock %}
+
