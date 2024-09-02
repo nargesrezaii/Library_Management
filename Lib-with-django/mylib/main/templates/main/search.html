@@ -1,0 +1,12 @@
+{% extends 'main/base.html' %}
+
+{% block title %}Search books{% endblock %}
+
+{% block content %}
+<form method="post" action="/search/">
+    {% csrf_token %}
+    {{newsearch.as_p}}
+    <button type="submit" ,name="search">find</button>
+</form>
+{% endblock %}
+

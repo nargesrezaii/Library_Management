@@ -1,0 +1,14 @@
+{% extends 'main/base.html' %}
+
+{% block title %}Remove book{% endblock %}
+
+{% block content %}
+<h1>Remove a book</h1>
+<form method="post" action="/create/">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type="submit" ,name="save changes">delete this book</button>
+</form>
+{% endblock %}
+
+
