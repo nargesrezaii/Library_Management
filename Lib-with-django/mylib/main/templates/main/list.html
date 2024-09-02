@@ -3,7 +3,7 @@
 {% block title %}Author's books{% endblock %}
 
 {% block content %}
-<h1>{{author.name}}</h1>
+<h2>{{author.name}}</h2>
 <ul>
     {% for book in author.book_set.all%}
     <li>{{book.title}}</li>

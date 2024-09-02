@@ -4,7 +4,7 @@
 
 {% block content %}
 <form method="POST" action="/search/">
-    <h1>Find books or authors</h1>
+    <h2>Find books or authors</h2>
     {% csrf_token %}
     {{form.as_p}}
     <button type="submit",name="search">Find</button>

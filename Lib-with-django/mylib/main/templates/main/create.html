@@ -3,7 +3,7 @@
 {% block title %}Add a new book{% endblock %}
 
 {% block content %}
-<h1>Add a new book</h1>
+<h2>Add a new book</h2>
 <form method="post" action="/create/">
     {% csrf_token %}
     {{newbookform.as_p}}
