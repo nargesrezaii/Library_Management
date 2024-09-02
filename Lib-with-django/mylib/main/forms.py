@@ -6,8 +6,8 @@ class NewBook(forms.Form):
     price = forms.IntegerField()
     publication_date = forms.DateField(label="Publication date: (yyyy-mm-dd)")
     
-class search_books(forms.Form):
-    name=forms.CharField(label="Author or book name:",max_length=200)
+class searchbooks(forms.Form):
+    title=forms.CharField(label="Author or book name:",max_length=200)
 
 class removebook(forms.Form):
     title = forms.CharField(max_length=200)

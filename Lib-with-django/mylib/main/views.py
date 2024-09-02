@@ -3,28 +3,22 @@ from turtle import title
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect 
 from .models import Author, Book
-from .forms import NewBook, search_books , removebook
+from .forms import NewBook, searchbooks , removebook
 # Create your views here.
-    
+
 def showbyname(request):
-    query = request.GET.get('query','')
-    books=[]
-    author=None
-
-    if query:
-        books =Book.objects.filter(title__icontains=query)
-
-        if not books.exists():
-            author = Author.objects.filter(name__icontains=query).first()
-            return render(request,"main/list.html",{"author":author})
-      
-            if author:
-                books = author.books.all()
-    context={
-        'query' : query, 'books' : books, 'author' : author        
-    }
-    
-    return render(request,"main/book_search.html",context)
+    if request.method == "POST":
+        form = searchbooks(request.POST)
+        if form.is_valid():
+            t = form.cleaned_data["title"]
+            b = Book.objects.filter(title=t).first()
+            if not b :
+                return render(request,"main/errormessage.html",{"message":'This book does not exist!'})
+            
+            return render(request,"main/book_search.html",{"book":b})
+    else:
+        form = searchbooks()
+    return render(request,"main/book_search.html",{"form":form})
 
 def home(response):
     return render(response,"main/home.html",{})

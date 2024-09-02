@@ -3,23 +3,11 @@
 {% block title %}Search books{% endblock %}
 
 {% block content %}
-<h1>Find books or authors</h1>
-<form method="GET" action="/search/">
-    <input type="text" name="q" placeholder="Enter book title or author name" value="{{query}}">
-    <button type="submit">Find</button>
+<form method="POST" action="/search/">
+    <h1>Find books or authors</h1>
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type="submit",name="search">Find</button>
 </form>
-
-{% if query %}
-<h2>Search results for "{{query}}"</h2>
-    {% if books%}
-<ul>
-    {% for book in books %}
-    <li>{{book.title}}} by {{book.author.name}}</li>
-    {% endfor %}
-</ul>
-    {% else %}
-<p>No results found.</p>
-    {% endif%}
-{% endif%}
 {% endblock %}
 
