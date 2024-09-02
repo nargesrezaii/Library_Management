@@ -15,7 +15,7 @@ def showbyname(request):
             if not b :
                 return render(request,"main/errormessage.html",{"message":'This book does not exist!'})
             
-            return render(request,"main/book_search.html",{"book":b})
+            return render(request,"main/bookname.html",{"book":b})
     else:
         form = searchbooks()
     return render(request,"main/book_search.html",{"form":form})
