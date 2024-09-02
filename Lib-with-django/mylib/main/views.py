@@ -60,22 +60,21 @@ def create(response):
             else:
                 b = Book(title=t,author=auth,price=p,publication_date=pubdate)
                 b.save()
-        return HttpResponseRedirect("/books/")
+            return HttpResponseRedirect("/books/")
     else:
         form = NewBook()
     return render(response,"main/create.html",{"newbookform":form})
 
-def remove(response):
-    if response.method == "POST":
-        form = removebook(response.POST)
+def remove(request):
+    if request.method == "POST":
+        form = removebook(request.POST)
         if form.is_valid():
             t = form.cleaned_data["title"]
             b = Book.objects.filter(title=t).first()
-            if (b.exists())==False:
-                return render(response,"main/errormessage.html",{"message":'This book does not exist!'})
-            else:
-                b.delete()
-        return HttpResponseRedirect("/books/")
+            if not b :
+                return render(request,"main/errormessage.html",{"message":'This book does not exist!'})
+            b.delete()
+            return HttpResponseRedirect("/books/")
     else:
         form = removebook()
-    return render(response,"main/removeBook.html",{"form":form})
+    return render(request,"main/removeBook.html",{"form":form})
