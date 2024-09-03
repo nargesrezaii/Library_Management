@@ -1,0 +1,35 @@
+{% extends 'main/base.html' %}
+
+{% block title %}Find Book{% endblock %}
+
+{% block content %}
+<h2>Find a book</h2>
+
+<form method="post">
+    {% csrf_token %}
+    <fieldset>
+        <legend>
+            book info
+        </legend>
+        {{title_form.as_p}}
+        <button type="submit">Find this book</button>
+    </fieldset>
+</form>
+
+    {% if error_message %}
+        <p>{{ error_message }}</p>
+    {% endif %}
+
+    {%if book %}
+        <h2>Book Found</h2>
+        <p>Title: {{book.title}}</p>
+        <p>Author: {{book.author}}</p>
+        <p>Price: {{book.price}}$</p>
+        <p>Published on: {{book.publication_date}}</p>
+    
+        <form method="post" action="{%url 'edit_book' book.title%}">
+            {% csrf_token %}
+            <button type="submit">Edit</button>
+        </form>
+    {% endif %}
+{% endblock %}

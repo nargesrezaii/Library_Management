@@ -1,0 +1,12 @@
+{% extends 'main/base.html' %}
+
+{% block title %}Add a new book{% endblock %}
+
+{% block content %}
+<h2>Enter new information:</h2>
+<form method="post" action="/edit/">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type="submit" ,name="save changes">save new info</button>
+</form>
+{% endblock %}

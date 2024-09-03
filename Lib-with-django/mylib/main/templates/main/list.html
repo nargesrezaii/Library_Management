@@ -6,7 +6,11 @@
 <h2>{{author.name}}</h2>
 <ul>
     {% for book in author.book_set.all%}
-    <li>{{book.title}}</li>
+    <li>
+        <h3>{{book.title}}</h3>
+        <p>Price: {{book.price}}$</p>
+        <p>Published on: {{book.publication_date}}</p>
+    </li>
     {% endfor%}
 </ul>
 {% endblock %}

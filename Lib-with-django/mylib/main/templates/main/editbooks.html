@@ -1,0 +1,32 @@
+{% extends 'main/base.html' %}
+
+{% block title %}Edit{% endblock %}
+
+{% block content %}
+    <h1>Edit book properties</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        <fieldset>
+            <legend>
+                Find a book
+            </legend>
+            {{title_form.as_p}}
+            <button type="submit" ,name="search_book">Find this book</button>
+        </fieldset>
+    </form>
+
+    {% if book %}
+    <h2>Edit book: {{book.title}}</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="hidden" name="book_id" value="{{book.id}}">
+        <button type="submit" ,name="edit_book">save changes</button>
+    </form>
+    {% elif error_message %}
+        <p>{{ error_message }}</p>
+    {% endif %}
+{% endblock %}
+
+

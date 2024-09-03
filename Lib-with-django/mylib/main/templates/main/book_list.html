@@ -1,0 +1,28 @@
+{% extends 'main/base.html' %}
+
+{% block title %}Filter Books{% endblock %}
+
+{% block content %}
+<h2>Book List</h2>
+
+<form method="get" action="{% url 'filter_list' %}">
+    {{ form.as_p }}
+    <button type="submit">Filter</button>
+</form>
+
+<ul>
+    {% for book in books %}
+    <li>
+        {{ book.title }} - {{ book.price }} - {{ book.publication_date }}
+        <form action="{% url 'delete_book' book.id %}" method="post" style="display:inline;">
+            {% csrf_token %}
+            <button type="submit">Delete</button>
+        </form>
+    </li>
+    {% empty %}
+    <li>No books found.</li>
+    {% endfor %}
+</ul>
+{% endblock %}
+
+
