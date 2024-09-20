@@ -1,7 +1,7 @@
 from django.urls import path
 from . import views
 
-#homepage
+
 urlpatterns = [
     path("search/",views.showbyname,name="name"),
     path("create/",views.create,name="create"),
